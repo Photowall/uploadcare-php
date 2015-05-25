@@ -1,5 +1,5 @@
 {
-    "name": "uploadcare/uploadcare-php",
+    "name": "Photowall/uploadcare-php",
     "description": "Uploadcare API binding for PHP",
     "license": "MIT",
     "authors": [
