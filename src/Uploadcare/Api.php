@@ -157,13 +157,16 @@ class Api
    * Copy file
    *
    * @param string $source CDN URL or file's uuid you need to copy.
-   * @param string $target Name of custom storage connected to your project. Uploadcare storage is used if target is absent.
+   * @param array $params
+   *  'target' => 'inquiries',
+   *  'pattern' => 'inquiries/111/retouch.png'
    * @return File|string
    */
-  public function copyFile($source, $target = null)
+  public function copyFile($source, $params = array())
   {
-    $data = $this->__preparedRequest('file_copy', 'POST', array(), array('source' => $source, 'target' => $target));
-    if (array_key_exists('result', (array)$data) == true) {
+    $params['source'] = $source;
+    $data = $this->__preparedRequest('file_copy', 'POST', array(), $params);
+    if (key_exists('result', (array)$data) == true) {
       if ($data->type == 'file') {
         return new File((string)$data->result->uuid, $this);
       } else {

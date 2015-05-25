@@ -130,23 +130,27 @@ class File
   /**
    * Copy the file.
    *
-   * @param string $target Name of custom storage.
+   * @param array $params
+   *  'target' => 'inquiries',
+   *  'pattern' => 'inquiries/111/retouch.png'
    * @return File|string
    */
-  public function copy($target = null)
+  public function copy($params = array())
   {
-    return $this->api->copyFile($this->getUrl(), $target);
+    return $this->api->copyFile($this->getUrl(), $params);
   }
 
   /**
    * Copy the file to custom storage.
    *
-   * @param string $target Name of custom storage.
+   * @param array $params
+   *  'target' => 'inquiries',
+   *  'pattern' => 'inquiries/111/retouch.png'
    * @return string
    */
-  public function copyTo($target)
+  public function copyTo($params)
   {
-    return (string)$this->copy($target);
+    return (string)$this->copy($params);
   }
 
   /**
